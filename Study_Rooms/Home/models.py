@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.core.validators import RegexValidator
 
 # Create your models here.
 class User(AbstractUser):
@@ -7,10 +8,24 @@ class User(AbstractUser):
     bio = models.TextField(null=True)
     avatar = models.ImageField(null=True,default="avatar.svg")
     is_online = models.BooleanField(default=False)
+
+    # Phone Number Implementation
+    phoneNumberRegex = RegexValidator(regex = r"^\+?1?\d{8,15}$")
+    phoneNumber = models.CharField(null=True, validators = [phoneNumberRegex], max_length = 16, unique = True)
+    # Address Implementation
+    address = models.CharField(null=True, max_length=128)
     
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS =  []
 
+class Category(models.Model):
+    name = models.CharField(max_length=122)
+    created = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        ordering = ['-created']
+
+    def __str__(self):
+        return self.name
 
 class Topic(models.Model):
     name = models.CharField(max_length=122)
@@ -24,6 +39,7 @@ class Topic(models.Model):
 class Room(models.Model):    
     host = models.ForeignKey(User, on_delete=models.SET_NULL,null=True,blank=True)
     topics = models.ForeignKey(Topic, on_delete=models.SET_NULL,null=True)
+    category = models.ManyToManyField(Category, related_name='category',blank=True)
     name = models.CharField(max_length=122)
     description = models.TextField(max_length=250,null=True, blank=True)
     participants = models.ManyToManyField(User, related_name='participants',blank=True)

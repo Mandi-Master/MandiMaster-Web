@@ -44,6 +44,9 @@
       {{Room.participants.all.count}} Joined
     </a>
     <p class="roomListRoom__topic">{{Room.topics}}</p>
+    {% for category in Room.category.all %}
+      <p class="roomListRoom__topic">{{category.name}}</p>
+    {% endfor %}
   </div>
 </div>
 {% endfor %}
