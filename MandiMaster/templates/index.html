@@ -1,0 +1,40 @@
+{% extends 'main.html' %} {% block title %}Home {% endblock title %} {% block search %} {% include 'list_search.html' %} {% endblock search %} {% block body %}
+
+<main class="layout layout--3">
+  <div class="container">
+    <!-- Topics Start -->
+    {% include 'list_topics_browse.html' %}
+    <!-- <div></div> -->
+    <!-- Topics End -->
+
+    <!-- Room List Start -->
+    <div class="roomList">
+      {% include 'list_search_mobile.html' %}
+        <div class="roomList__header">
+          <div>
+            <p>{{room_count}} Item Found</p>
+          </div>
+          {% if user.is_authenticated %}
+          <a class="btn btn--main" href="/create_list" >
+            <svg
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+            >
+              <title>add</title>
+              <path
+                d="M16.943 0.943h-1.885v14.115h-14.115v1.885h14.115v14.115h1.885v-14.115h14.115v-1.885h-14.115v-14.115z"
+              ></path>
+            </svg>
+            Listing
+          </a>
+          {% endif %}
+        </div>
+      {% include 'list_feed.html' %}
+    </div>
+  </div>
+</main>
+
+{% endblock body %}

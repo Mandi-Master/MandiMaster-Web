@@ -1,0 +1,36 @@
+{% for Room in room_list %}
+<div class="roomListRoom">
+  <div class="roomListRoom__header">
+    <a href="/profile/{{Room.host.id}}" class="roomListRoom__author">
+      {% if Room.host.is_online %}
+      <div class="avatar avatar--small active">
+        {% else %}
+      <div class="avatar avatar--small ">
+        {% endif %}
+        <img src="{{Room.host.avatar.url}}" />
+      </div>
+      <span>@{{Room.host.username}}</span>
+    </a>
+    <div class="roomListRoom__actions">
+      <span>{{Room.created | timesince}} ago</span>
+    </div>
+  </div>
+  <a href="/list_details/{{Room.id}}" style="display: block;">
+  <div class="roomListRoom__content">
+    <!-- <a href="/room_details/{{Room.id}}">{{Room.name}}</a> -->
+    <h1 style="font-size: 2.5rem; font-weight: bold;">{{Room.name}}</h1>
+    <br>
+    <span style="color: white;">
+      Location : {{Room.address}}
+    </span>
+    
+  </div>
+</a>
+  <div class="roomListRoom__meta">
+    <a href="/list_details/{{Room.id}}" class="roomListRoom__joined">
+      {{Room.category}} category
+    </a>
+    <p class="roomListRoom__topic">{{Room.topics}}</p>
+  </div>
+</div>
+{% endfor %}
