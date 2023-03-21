@@ -25,6 +25,8 @@
   text-rendering: optimizeLegibility;
   /* color: inherit; */
   font-size: inherit;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
 }
 
 html {
@@ -186,15 +188,15 @@ a {
 
 .avatar.avatar--large img {
   display: block;
-  width: 25rem;
-  height: 25rem;
+  width: 15rem;
+  height: 15rem;
   border-radius: 50%;
 }
 
 .avatar.avatar--large:after {
-  width: 2rem;
-  height: 2rem;
-  bottom: 11px;
+  width: 1.3rem;
+  height: 1.3rem;
+  bottom: 0px;
   right: 31.5px;
 }
 
@@ -463,6 +465,38 @@ a {
 .layout__body {
   margin: 3rem;
 }
+
+.girdroomlist {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 15px;
+}
+.divgirdroomlistimg{
+  display: flex !important;
+  margin: auto !important;
+}
+.girdroomlistimg{
+  border-radius: 5px;
+  width: 25rem;
+  height: 25rem;
+  display: flex !important;
+  margin: auto !important;
+}
+@media screen and (max-width: 900px) {
+  .girdroomlist {
+    display: grid;
+    grid-template-columns: 1fr 1fr !important;
+    grid-gap: 15px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .girdroomlist {
+    display: grid;
+    grid-template-columns: 1fr !important;
+    grid-gap: 15px;
+  }
+}
+
 
 @media screen and (max-width: 900px) {
   .activities,
@@ -754,12 +788,11 @@ a {
   height: 100vh;
 }
 .room__flex_right img {
-  width: 100%;
-  height: 40%;
+  width: 50rem;
+  height: 40rem;
   display: flex;
-  margin-left: auto;
-  margin-right: auto;
   margin-top: 5rem;
+  border-radius: 15px;
 }
 
 /*==============================
@@ -942,7 +975,6 @@ a {
   overflow: hidden;
   position: relative;
 }
-
 @media screen and (max-width: 900px) {
   .room__flex_left {
     width: 100%;
@@ -960,9 +992,9 @@ a {
   }
   .room__flex_right img {
     width: 40rem;
-    height: 40rem;
+    height: 30rem;
     display: flex;
-    margin-left: auto;
+    margin-left: 0;
     margin-right: auto;
     margin-bottom: 2rem;
     margin-top: 0;
@@ -1051,6 +1083,9 @@ a {
     margin-right: auto;
     margin-bottom: 2rem;
     margin-top: 0;
+  }
+  .deletelistbutton{
+    margin-bottom: 1rem !important;
   }
 }
 

@@ -26,30 +26,30 @@
     </div>
     <span>@{{room.host.username}}</span><br />
   </a>
-  <h1 style="font-size: 2.5rem;"><a>{{room.name}}</a></h1>
+  <h1 style="font-size: 2.5rem;"><a>{{room.Title}}</a></h1>
   created {{room.created}}
+  <br>
+  <br>
+  <h3><a>Type</a> : {{room.Type}}</h3>
+  <h3><a>Category</a> : {{room.Category}}</h3>
+  <h3><a>Price</a> : {{room.Price}} {{room.Currency}}</h3>
+  <h3><a>Quantity</a> : {{room.Quantity}}</h3>
+  <h3><a>Contact</a> : {{room.host.phoneNumber}}</h3>
   <br />
-  <br />
-  <h3><a>Type</a></h3>
-  {{room.topics}}
-  <br />
-  <h3><a>Category</a></h3>
-  {{room.category}}
+  <h3><a>City</a></h3>
+  {{room.City}}
   <br />
   <h3><a>Address</a></h3>
-  {{room.address}}
-  <br />
-  <h3><a>Contact</a></h3>
-  {{room.host.phoneNumber}}
+  {{room.Address}}
   <br />
   <h3><a>Description</a></h3>
-  {{room.description}}
+  {{room.Description}}
   <br />
   <br />
   {% if room.host == request.user %}
   <h3><a>Actions</a></h3>
   <span
-    ><a href="/update_list/{{room.id}}"
+    ><a href="/update_list/{{room.id}}" class="deletelistbutton"
       ><button class="btn btn--dark" type="submit">Update Listing</button></a
     ></span
   >
@@ -64,7 +64,7 @@
 </div>
 <div class="room__flex_right avatar--large">
   
-  <img src="{{room.image.url}}" alt="">
+  <img src="{{room.Image.url}}" alt="Product Image">
 </div>
 </div>
 

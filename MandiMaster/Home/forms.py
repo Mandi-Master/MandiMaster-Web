@@ -31,6 +31,12 @@ class RoomForm(ModelForm):
 
     def __init__(self,*args, **kwargs):
         super(RoomForm, self).__init__(*args, **kwargs)
-        self.fields['topics'].widget.attrs['class'] = 'form-control'
-        self.fields['name'].widget.attrs['class'] = 'form-control'
-        self.fields['description'].widget.attrs['class'] = 'form-control'
+        self.fields['Type'].widget.attrs['class'] = 'form-control'
+        self.fields['Category'].widget.attrs['class'] = 'form-control'
+        self.fields['Title'].widget.attrs['class'] = 'form-control'
+        self.fields['Price'].widget.attrs['class'] = 'form-control'
+        self.fields['Currency'].widget.attrs['class'] = 'form-control'
+        self.fields['Quantity'].widget.attrs['class'] = 'form-control'
+        self.fields['City'].widget.attrs['class'] = 'form-control'
+        self.fields['Address'].widget.attrs['class'] = 'form-control'
+        self.fields['Description'].widget.attrs['class'] = 'form-control'

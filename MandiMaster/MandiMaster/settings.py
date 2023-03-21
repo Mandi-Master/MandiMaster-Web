@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Home.apps.HomeConfig',
+    'rest_framework',
+    'corsheaders',
 ]
 AUTH_USER_MODEL = 'Home.User'
 
@@ -50,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = 'MandiMaster.urls'
@@ -132,3 +135,6 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_ROOT = BASE_DIR / "static/images/user_upload"
+
+
+CORS_ALLOW_ALL_ORIGINS = True

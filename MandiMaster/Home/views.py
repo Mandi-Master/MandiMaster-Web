@@ -19,13 +19,13 @@ def index(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
     topics = Topic.objects.all()
     room_list = Room.objects.filter(
-        Q(name__icontains=q) |
-        Q(address__icontains=q) |
-        Q(category__name__icontains=q) |
-        Q(description__icontains=q) |
-        Q(topics__name__icontains=q) 
+        Q(Title__icontains=q) |
+        Q(City__icontains=q) |
+        Q(Category__name__icontains=q) |
+        Q(Description__icontains=q) |
+        Q(Type__name__icontains=q) 
     )
-    room_messages = Message.objects.filter(Q(room__name__icontains=q))
+    room_messages = Message.objects.filter(Q(room__Title__icontains=q))
     room_count = room_list.count()
     context = {'topics':topics,'room_list':room_list,'room_count':room_count,'room_messages':room_messages}
     return render(request, 'index.html',context)
@@ -150,10 +150,18 @@ def update_user_profile(request):
     form = UserForm(instance = user)
     if request.method == 'POST':
         form = UserForm(request.POST,request.FILES,instance = user)
-        if form.is_valid:
-            form.save()
-            messages.success(request, "Profile has been updated sucessfully...")
-            return redirect('profile',id= user.id)
+        try:
+            if form.is_valid:
+                form.save()
+                messages.success(request, "Profile has been updated sucessfully...")
+                return redirect('/home')
+            else:
+                messages.success(request, 'There was a error in updating your profile!')
+                return redirect('/update_profile') 
+        except:
+            messages.success(request, 'There was a error in updating your profile!')
+            return redirect('/update_profile') 
+
     return render(request, 'user_profile_update.html',{'form':form,'user':user})
 
 @login_required(login_url='/login')

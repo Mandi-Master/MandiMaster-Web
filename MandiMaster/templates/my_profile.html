@@ -28,7 +28,7 @@
           <p>@{{user.username}}</p>
           <p>{{user.email}}</p>
           {% if user.is_authenticated %}
-          <a href="/update_profile" class="btn btn--main btn--pill">Edit Profile</a>
+          <a href="/update_profile" class="btn btn--main btn--pill deletelistbutton">Edit Profile</a>
           <a href="/update_user_password" class="btn btn--main btn--pill">Change Password</a>
           {% endif %}
         </div>
